@@ -1,0 +1,86 @@
+'use client';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+
+export default function AdminDashboard() {
+  const router = useRouter();
+  const [petugas, setPetugas] = useState([
+    { nama: 'Dr. Budi', role: 'Dokter' },
+    { nama: 'Sinta', role: 'Groomer' },
+    { nama: 'Mei', role: '' },
+  ]);
+
+  const [layanan, setLayanan] = useState([
+    { nama: 'Grooming', durasi: '30 Menit', role: 'Groomer' },
+    { nama: 'Vaksin', durasi: '20 Menit', role: 'Dokter' },
+    { nama: 'Pet Hotel', durasi: 'Bebas', role: '' },
+  ]);
+
+  return (
+    <div className="min-h-screen bg-[#fffaf5] font-sans">
+      {/* Header */}
+      <header className="bg-orange-500 text-white flex justify-between items-center px-8 py-4 shadow-md">
+        <div className="flex items-center gap-3">
+          <img src="/logo.svg" alt="logo" className="w-8 h-8" />
+          <span className="text-xl font-bold">PetGuardian</span>
+        </div>
+        <nav>
+          <Link href="/login" className="hover:underline">
+            Logout
+          </Link>
+        </nav>
+      </header>
+
+      {/* Title */}
+      <section className="px-10 py-6">
+        <h2 className="text-xl text-orange-500 font-semibold">Admin</h2>
+      </section>
+
+      {/* Content */}
+      <section className="bg-white m-6 rounded-2xl shadow-sm px-10 py-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Daftar Petugas */}
+        <div className="border-2 border-orange-300 rounded-xl p-6 text-orange-500">
+          <h3 className="text-center font-bold text-lg mb-4">Daftar Petugas</h3>
+          <ol className="list-decimal list-inside mb-6">
+            {petugas.map((p, i) => (
+              <li key={i}>
+                {p.nama} {p.role && `(${p.role})`}
+              </li>
+            ))}
+          </ol>
+          <div className="text-center">
+            <Link
+              href="/dashboard/admin/tambah"
+              className="bg-orange-400 hover:bg-orange-500 text-white py-2 px-4 rounded-md text-sm inline-flex items-center gap-2"
+            >
+              ➕ Tambah Petugas
+            </Link>
+          </div>
+        </div>
+
+        {/* Daftar Layanan */}
+        <div className="border-2 border-orange-300 rounded-xl p-6 text-orange-500">
+          <h3 className="text-center font-bold text-lg mb-4">Daftar Layanan</h3>
+          <ol className="list-decimal list-inside mb-6 space-y-3">
+            {layanan.map((l, i) => (
+              <li key={i}>
+                <div>{l.nama}</div>
+                <div className="text-sm">{l.durasi}</div>
+                {l.role && <div className="text-sm">Role : {l.role}</div>}
+              </li>
+            ))}
+          </ol>
+          <div className="text-center">
+            <Link
+              href="/dashboard/admin/tambah"
+              className="bg-orange-400 hover:bg-orange-500 text-white py-2 px-4 rounded-md text-sm inline-flex items-center gap-2"
+            >
+              ➕ Tambah Layanan
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

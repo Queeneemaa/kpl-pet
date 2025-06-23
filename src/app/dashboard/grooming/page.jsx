@@ -1,25 +1,36 @@
 'use client';
+import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import BookingForm from '@/components/BookingForm';
 
 export default function GroomingPage() {
+  const router = useRouter();
+
+  const handleBookingClick = () => {
+    router.push('/dashboard/user/booking');
+  };
+
   return (
     <div className="min-h-screen bg-[#fffaf5] font-sans">
       {/* Header */}
       <header className="bg-orange-500 text-white flex justify-between items-center px-8 py-4 shadow-md">
         <div className="flex items-center gap-3">
-          <img src="/logo.svg" alt="logo" className="w-8 h-8" />
+          <Image src="/image/anjing-poy.jpg" alt="logo" width={32} height={32} className="rounded-full" />
           <span className="text-xl font-bold">PetGuardian</span>
         </div>
         <nav className="flex gap-8 text-sm font-medium">
-          <Link href="#">Booking</Link>
-          <Link href="#">My Booking</Link>
+          <Link href="/dashboard/user/booking">Booking</Link>
+          <Link href="/dashboard/user/my-booking">My Booking</Link>
           <Link href="/login">Logout</Link>
         </nav>
       </header>
 
       {/* Greeting */}
       <section className="px-10 py-6">
-        <h2 className="text-xl text-orange-500 font-semibold">Hi, <span className="text-orange-600">Keykey</span></h2>
+        <h2 className="text-xl text-orange-500 font-semibold">
+          Hi, <span className="text-orange-600">Keykey</span>
+        </h2>
         <p className="text-sm text-gray-500">Take care of your pet !</p>
       </section>
 
@@ -50,7 +61,10 @@ export default function GroomingPage() {
         </ol>
 
         <div className="mt-8 text-center">
-          <button className="bg-orange-500 text-white py-2 px-8 rounded-md hover:bg-orange-600 transition">
+          <button
+            onClick={handleBookingClick}
+            className="bg-orange-500 text-white py-2 px-8 rounded-md hover:bg-orange-600 transition"
+          >
             Booking
           </button>
         </div>

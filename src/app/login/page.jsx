@@ -13,9 +13,13 @@ export default function LoginPage() {
   const handleLogin = (e) => {
     e.preventDefault();
     if (email && password) {
-      router.push('/dashboard');
-    } else {
-      alert('Isi email dan password terlebih dahulu');
+  // Simulasi role berdasarkan email
+  let role = 'user';
+  if (email.includes('petugas')) role = 'staff';
+  if (email.includes('admin')) role = 'admin';
+
+  localStorage.setItem('role', role);
+  router.push('/dashboard');
     }
   };
 
