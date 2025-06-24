@@ -1,6 +1,5 @@
 'use client';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 export default function VaccinePage() {
@@ -14,34 +13,25 @@ export default function VaccinePage() {
     <div className="min-h-screen bg-[#fffaf5] font-sans">
       <header className="bg-orange-500 text-white flex justify-between items-center px-8 py-4 shadow-md">
         <div className="flex items-center gap-3">
-          <Image src="/logo.svg" alt="logo" width={32} height={32} />
+          <img src="/logo.svg" alt="logo" className="w-8 h-8" />
           <span className="text-xl font-bold">PetGuardian</span>
         </div>
         <nav className="flex gap-8 text-sm font-medium">
-          <Link href="/dashboard/user/booking">Booking</Link>
-          <Link href="/dashboard/user/my-booking">My Booking</Link>
+          <Link href="/dashboard/booking">Booking</Link>
+          <Link href="/dashboard/my-booking">My Booking</Link>
           <Link href="/login">Logout</Link>
         </nav>
       </header>
 
       <section className="px-10 py-6">
-        <h2 className="text-xl text-orange-500 font-semibold">
-          Hi, <span className="text-orange-600">Keykey</span>
-        </h2>
-        <p className="text-sm text-gray-500">Here are the vaccination rules.</p>
+        <h2 className="text-xl text-orange-500 font-semibold">Hi, <span className="text-orange-600">User</span></h2>
+        <p className="text-sm text-gray-500">Vaccination Service for your Pet</p>
       </section>
 
       <section className="bg-white m-6 rounded-2xl shadow-sm px-10 py-6">
         <h3 className="text-lg font-bold mb-4 text-gray-800">Vaccine</h3>
-
-        <p className="font-medium mb-2">Rules :</p>
-        <ul className="list-disc list-inside text-gray-800 space-y-3 mb-6">
-          <li>Hewan harus dalam keadaan sehat sebelum vaksinasi.</li>
-          <li>Usia minimum untuk vaksin: 8 minggu.</li>
-          <li>Tidak sedang sakit atau demam.</li>
-        </ul>
-
-        <div className="mt-8 text-center">
+        <p className="text-gray-700 mb-6">Pastikan hewan peliharaan dalam kondisi sehat untuk vaksinasi.</p>
+        <div className="text-center">
           <button
             onClick={handleBookingClick}
             className="bg-orange-500 text-white py-2 px-8 rounded-md hover:bg-orange-600 transition"

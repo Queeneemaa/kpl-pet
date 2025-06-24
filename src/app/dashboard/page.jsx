@@ -51,20 +51,24 @@ export default function DashboardPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Link href="/dashboard/grooming">
                 <div className="bg-lime-100 p-6 rounded-xl flex flex-col items-center shadow hover:scale-105 transition cursor-pointer">
-                  <Image src="/image/anjing-poy.jpg" alt="Grooming" width={100} height={100} />
+                  <Image src="/image/anjing_poy-removebg-preview.png" alt="Grooming" width={100} height={100} />
                   <p className="mt-4 font-semibold text-gray-700">Grooming</p>
                 </div>
               </Link>
-              <div className="bg-sky-100 p-6 rounded-xl flex flex-col items-center shadow">
-                <Image src="/vaccine.png" alt="Vaccine" width={100} height={100} />
-                <p className="mt-4 font-semibold text-gray-700">Vaccine</p>
-              </div>
-              <div className="bg-violet-100 p-6 rounded-xl flex flex-col items-center shadow">
-                <Image src="/hotel.png" alt="Pet Hotel" width={100} height={100} />
-                <p className="mt-4 font-semibold text-gray-700">Pet Hotel</p>
-              </div>
+             <Link href="/dashboard/vaccine">
+                <div className="bg-sky-100 p-6 rounded-xl flex flex-col items-center shadow hover:scale-105 transition cursor-pointer">
+                  <Image src="/image/anjing_vaksin-removebg-preview.png" alt="Vaccine" width={100} height={100} />
+                  <p className="mt-4 font-semibold text-gray-700">Vaccine</p>
+                </div>
+              </Link>
+              <Link href="/dashboard/pet-hotel">
+                <div className="bg-purple-100 p-6 rounded-xl flex flex-col items-center shadow hover:scale-105 transition cursor-pointer">
+                  <Image src="/image/kucing-removebg-preview.png" alt="pet-hotel" width={100} height={100} />
+                  <p className="mt-4 font-semibold text-gray-700">Pet Hotel</p>
+                </div>
+              </Link>
             </div>
-          </>
+          </> 
         )}
 
         {role === 'staff' && (
@@ -78,11 +82,14 @@ export default function DashboardPage() {
         {role === 'admin' && (
           <div>
             <h3 className="text-lg font-bold mb-4">Admin Dashboard</h3>
-            <p>Kelola pengguna, layanan, dan sistem.</p>
-            {/* Tambahkan link ke manajemen user, statistik, dll */}
-          </div>
+            <p className="mb-4">Kelola pengguna, layanan, dan sistem.</p>
+          <Link href="/dashboard/admin">
+            <button className="bg-orange-500 text-white px-6 py-2 rounded-md hover:bg-orange-600 transition">
+              Masuk Halaman Admin
+            </button>
+          </Link>
+        </div>
         )}
       </section>
     </div>
-  );
-}
+  );}

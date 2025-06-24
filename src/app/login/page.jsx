@@ -28,7 +28,7 @@ export default function LoginPage() {
       {/* Panel kiri (oranye, logo) */}
       <div className="w-1/2 bg-orange-400 text-white flex flex-col justify-center items-center px-10">
         <div className="bg-white p-6 rounded-full mb-6">
-          <img src="/logo.svg" alt="logo" className="w-24 h-24" />
+          <img src="/image/Splash_Screen-removebg-preview.png" alt="logo" className="w-24 h-24" />
         </div>
         <h1 className="text-3xl font-bold">PetGuardian</h1>
         <p className="text-sm mt-2">"Your Pets' Lifelong Protector"</p>

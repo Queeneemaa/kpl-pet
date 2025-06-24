@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function BookingPage() {
   const router = useRouter();
   const [form, setForm] = useState({
-    service: 'Grooming',
+    service: '',
     pet: '',
     date: '',
     time: '',
@@ -46,7 +46,7 @@ export default function BookingPage() {
 
       {/* Booking Form */}
       <section className="bg-white mx-6 rounded-2xl shadow-sm px-10 py-6">
-        <h3 className="text-lg font-bold text-brown-800 mb-6">Grooming</h3>
+        <h3 className="text-lg font-bold text-brown-800 mb-6">Booking</h3>
         <form onSubmit={handleSubmit} className="max-w-md mx-auto border border-orange-400 rounded-xl p-6 text-orange-500">
           <h4 className="text-center font-semibold mb-4">Book a Service</h4>
           {['service', 'pet', 'date', 'time', 'note'].map((field, i) => (

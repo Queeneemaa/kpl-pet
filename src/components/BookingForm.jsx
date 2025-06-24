@@ -5,11 +5,11 @@ import { useRouter } from 'next/navigation';
 export default function BookingForm() {
   const router = useRouter();
   const [form, setForm] = useState({
-    service: 'Grooming',
-    pet: '',
-    date: '',
-    time: '',
-    note: '',
+    service: 'Grooming', 
+    pet: '', 
+    date: '', 
+    time: '', 
+    note: '', 
   });
 
   const handleChange = (e) => {
