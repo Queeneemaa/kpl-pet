@@ -10,18 +10,25 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [visible, setVisible] = useState(false);
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    if (email && password) {
-  // Simulasi role berdasarkan email
-  let role = 'user';
-  if (email.includes('petugas')) role = 'staff';
-  if (email.includes('admin')) role = 'admin';
+ const handleLogin = (e) => {
+  e.preventDefault();
+  if (email && password) {
+    // Simulasi role berdasarkan email
+    let role = 'user';
+    if (email.includes('petugas')) role = 'staff';
+    if (email.includes('admin')) role = 'admin';
 
-  localStorage.setItem('role', role);
-  router.push('/dashboard');
+    localStorage.setItem('role', role);
+
+    // Redirect berdasarkan role
+    if (role === 'staff') {
+      router.push('/dashboard/petugas');
+    } else {
+      router.push('/dashboard'); // untuk user dan admin
     }
-  };
+  }
+};
+
 
   return (
     <div className="flex min-h-screen font-sans">

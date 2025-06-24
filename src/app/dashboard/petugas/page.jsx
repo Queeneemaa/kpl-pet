@@ -1,71 +1,46 @@
 'use client';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export default function PetugasDashboard() {
-  const [namaPetugas, setNamaPetugas] = useState('Sinta (Groomer)');
-  const [daftarBooking, setDaftarBooking] = useState([
-    {
-      nama: 'Keykey',
-      layanan: 'Grooming',
-      waktu: '10:00 - 10:30',
-      keterangan: 'Kucing Persia',
-    },
-    {
-      nama: 'Bobby',
-      layanan: 'Vaksin',
-      waktu: '11:00 - 11:20',
-      keterangan: 'Anjing Beagle',
-    },
-  ]);
+  const router = useRouter();
+
+  const goToBooking = (layanan) => {
+    router.push(`/dashboard/petugas/${layanan}`);
+  };
 
   return (
     <div className="min-h-screen bg-[#fffaf5] font-sans">
       {/* Header */}
       <header className="bg-orange-500 text-white flex justify-between items-center px-8 py-4 shadow-md">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <img src="/logo.svg" alt="logo" className="w-8 h-8" />
           <span className="text-xl font-bold">PetGuardian</span>
         </div>
-        <nav className="flex gap-6 text-sm">
-          <Link href="/login" className="hover:underline">Logout</Link>
+        <nav className="flex gap-8 text-sm font-medium">
+          <span className="cursor-pointer">Booking List</span>
+          <span className="cursor-pointer">Logout</span>
         </nav>
       </header>
 
-      {/* Greeting */}
-      <section className="px-10 py-6">
-        <h2 className="text-xl text-orange-500 font-semibold">Hi, {namaPetugas}</h2>
-        <p className="text-sm text-gray-500">Berikut adalah daftar booking hari ini</p>
-      </section>
-
-      {/* Daftar Booking */}
-      <section className="bg-white m-6 rounded-2xl shadow-sm px-10 py-6">
-        <h3 className="text-lg font-bold mb-4 text-gray-800">Daftar Booking Masuk</h3>
-        <div className="overflow-x-auto">
-          <table className="min-w-full text-sm border border-orange-300 rounded-md">
-            <thead className="bg-orange-100 text-orange-600">
-              <tr>
-                <th className="px-4 py-2 border-b">No</th>
-                <th className="px-4 py-2 border-b">Nama</th>
-                <th className="px-4 py-2 border-b">Layanan</th>
-                <th className="px-4 py-2 border-b">Waktu</th>
-                <th className="px-4 py-2 border-b">Keterangan</th>
-              </tr>
-            </thead>
-            <tbody>
-              {daftarBooking.map((b, i) => (
-                <tr key={i} className="text-gray-700">
-                  <td className="border px-4 py-2 text-center">{i + 1}</td>
-                  <td className="border px-4 py-2">{b.nama}</td>
-                  <td className="border px-4 py-2">{b.layanan}</td>
-                  <td className="border px-4 py-2">{b.waktu}</td>
-                  <td className="border px-4 py-2">{b.keterangan}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      {/* Content */}
+      <main className="px-10 py-10">
+        <h1 className="text-xl font-bold text-gray-800 mb-6">Booking List</h1>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div onClick={() => goToBooking('grooming')} className="bg-lime-100 hover:scale-105 transition cursor-pointer p-6 rounded-2xl shadow flex flex-col items-center">
+            <Image src="/image/kucing_grooming.png" alt="Grooming" width={100} height={100} />
+            <p className="mt-4 font-semibold text-gray-700">Grooming</p>
+          </div>
+          <div onClick={() => goToBooking('vaccine')} className="bg-sky-100 hover:scale-105 transition cursor-pointer p-6 rounded-2xl shadow flex flex-col items-center">
+            <Image src="/image/anjing_vaksin-removebg-preview.png" alt="Vaccine" width={100} height={100} />
+            <p className="mt-4 font-semibold text-gray-700">Vaccine</p>
+          </div>
+          <div onClick={() => goToBooking('pet-hotel')} className="bg-purple-100 hover:scale-105 transition cursor-pointer p-6 rounded-2xl shadow flex flex-col items-center">
+            <Image src="/image/kucing-removebg-preview.png" alt="Pet Hotel" width={100} height={100} />
+            <p className="mt-4 font-semibold text-gray-700">Pet Hotel</p>
+          </div>
         </div>
-      </section>
+      </main>
     </div>
   );
 }
